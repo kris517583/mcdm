@@ -216,100 +216,116 @@ def storage():
     if(request.method == "POST"):
         data = request.json["all_reports"]
         result = []
-        weights = [0,0,0,0,0,0]
+        #weights = [[0,0,0,0,0,0],[0,0,0,0],[0,0,0,0]]
+        #weights = [[1,1,1,1,1,1],[1,1,1,1],[1,1,1,1]]
+        weights = [[1,1,1,1,1,1],[1,1,1,1],[0,0,0,0]]
         for i in data:
             if i["TAB"]  == "3" :
                 result.append(i)
 
         tab3 = {
         "5848fce2-a6de-43bf-a878-cc8e63687f06" : {
-            "Web applicaiton" : [1,0,0,0,0,0],
-            "Big data analytics" :  [1,0,0,0,0,0],
-            "Data storage" :  [1,1,0,0,0,0],
-            "File sharing" :  [0,1,1,0,0,0],
-            "Data backup" :  [0,0,0,1,1,0],
-            "Video streaming" :  [0,0,0,0,0,0],
-            "Social media" :  [0,0,0,0,0,0],
-            "Financial Application" :  [0,0,0,0,0,0],
-            "Local archive" :  [0,0,1,0,0,0],
-            "Scientific modelling" : [0,1,0,0,0,0],
-            "Gaming Application" :  [1,0,0,0,0,0]
+            "Web applicaiton" : [[1,0,0,0,0,0],[1,0,0,0],[0,0,0,0]],
+            "Big data analytics" :  [[1,0,0,0,0,0],[0,0,1,0],[0,0,0,0]],
+            "Data storage" :  [[1,1,0,0,0,0],[0,0,0,1],[0,0,0,0]],
+            "File sharing" :  [[0,1,1,0,0,0],[0,0,1,0],[0,0,0,0]],
+            "Data backup" :  [[0,0,0,1,1,0],[0,0,0,0],[0,0,0,0]],
+            "Video streaming" :  [[0,0,0,0,0,0],[0,0,1,0],[0,0,0,0]],
+            "Social media" :  [[0,0,0,0,0,0],[0,1,0,0],[0,0,0,0]],
+            "Financial Application" :  [[0,0,0,0,0,0],[0,1,0,0],[0,0,0,0]],
+            "Local archive" :  [[0,0,1,0,0,0],[0,0,0,0],[0,0,0,0]],
+            "Scientific modelling" : [[0,1,0,0,0,0],[0,1,0,0],[0,0,0,0]],
+            "Gaming Application" :  [[1,0,0,0,0,0],[0,1,0,0],[0,0,0,0]]
         },
         "1d820edb-424c-4442-b15f-929e1fcf7e02" : {
-            "Less than 1000" : [0,0,0,0,0,0],
-            "1000 to 1 million" : [0,0,0,0,0,0],
-            "More than 1 million" :[0,0,0,0,0,0]
+            "Less than 1000" : [[0,0,0,0,0,0],[0,0,0,0],[1,0,0,0]],
+            "1000 to 1 million" : [[0,0,0,0,0,0],[0,0,0,0],[0,1,0,0]],
+            "More than 1 million" :[[0,0,0,0,0,0],[0,0,0,0],[0,0,1,0]]
         },
         "9b93c7ed-de5a-4da7-8914-6c4fecb2e653" : {
-            "Once in a week" : [1,1,1,0,0,0],
-            "Once in a month" : [0,0,0,1,0,0],
-            "Once in a year" : [0,0,0,0,1,0]
+            "Once in a week" : [[1,1,1,0,0,0],[0,0,0,0],[0,0,1,0]],
+            "Once in a month" : [[0,0,0,1,0,0],[0,0,0,0],[0,1,0,0]],
+            "Once in a year" : [[0,0,0,0,1,0],[0,0,0,0],[1,0,0,0]]
         },
         "1af7ea0c-5568-4d43-8248-74f423f4a30e" : {
-            "Photos and Videos" : [1,1,0,0,0,0],
-            "Music" : [1,1,0,0,0,0],
-            "Numerical data" : [0,1,0,0,0,0],
-            "Text data" : [1,1,0,0,0,0]
+            "Photos and Videos" : [[1,1,0,0,0,0],[0,0,1,0],[0,0,0,0]],
+            "Music" : [[1,1,0,0,0,0],[0,0,1,0],[0,0,0,0]],
+            "Numerical data" : [[0,1,0,0,0,0],[0,1,0,0],[0,0,0,0]],
+            "Text data" : [[1,1,0,0,0,0],[0,0,1,0],[0,0,0,0]]
         },
         "a82279df-7ce2-4fbc-a3cc-bff3766a4bf8" : {
-            "Yes" : [1,1,1,0,0,0],
-            "No" : [0,0,0,0,0,0]
+            "Yes" : [[1,1,1,0,0,0],[0,0,0,0],[0,0,0,0]],
+            "No" : [[0,0,0,0,0,0],[0,0,0,0],[0,0,0,0]]
         },
         "c6236767-d347-44e7-9b5c-3fcba2144410" : {
-            "Yes" : [1,0,0,0,0,0],
-            "No" : [0,1,1,0,0,0]    
+            "Yes" : [[1,0,0,0,0,0],[0,0,0,0],[0,0,0,0]],
+            "No" : [[0,1,1,0,0,0],[0,0,0,0],[0,0,0,0]]
         },
         "bff16ea2-7e48-42e4-b749-fe75bf01cc62" :{
-            "Yes" : [0,0,0,0,0,0],
-            "No" : [0,0,0,0,0,0]    
+            "Yes" : [[0,0,0,0,0,0],[0,0,0,0],[0,0,0,0]],
+            "No" : [[0,0,0,0,0,0],[0,0,0,0],[0,0,0,0]]
         },
         "9c14beaa-1b87-4666-b067-4dafb5ba0dc0" :{
-            "Yes" : [0,0,0,0,0,1],
-            "No" : [0,0,0,0,0,0]    
+            "Yes" : [[0,0,0,0,0,1],[0,0,0,0],[0,0,0,0]],
+            "No" : [[0,0,0,0,0,0],[0,0,0,0],[0,0,0,0]]
         },
         "07b4b16d-6fcb-4be6-a7fb-14ffff16c487" :{
-            "Yes" : [0,0,0,0,1,0],
-            "No" : [0,0,0,0,0,0]    
+            "Yes" : [[0,0,0,0,1,0],[0,0,0,0],[0,0,0,0]],
+            "No" : [[0,0,0,0,0,0],[0,0,0,0],[0,0,0,0]]
         },
         "86a757f6-3bf9-4caf-9688-b4e787533f14" :{
-            "Yes" : [0,0,1,0,0,0],
-            "No" : [0,0,0,0,0,0]
+            "Yes" : [[0,0,1,0,0,0],[0,0,0,0],[0,0,1,0]],
+            "No" : [[0,0,0,0,0,0],[0,0,0,0],[0,0,0,0]]
+        },
+        "f80cc759-80bb-4ebe-9ac1-3c0425ab3767" :{
+            "Small" : [[0,0,0,0,0,0],[0,0,0,0],[1,0,0,0]],
+            "Medium" : [[0,0,0,0,0,0],[0,0,0,0],[0,2,0,0]],
+            "Large" : [[0,0,0,0,0,0],[0,0,0,0],[0,0,3,0]]
         },
         "64183286-50e3-47b6-894b-6db050156d15" :{
-            "Dev" : [0,0,0,0,0,0],
-            "Staging" : [0,0,0,0,0,0],
-            "Prod" : [0,0,0,0,0,0]
+            "Dev" : [[0,0,0,0,0,0],[0,0,0,0],[1,0,0,0]],
+            "Staging" : [[0,0,0,0,0,0],[0,0,0,0],[1,0,0,0]],
+            "Prod" : [[0,0,0,0,0,0],[0,0,0,0],[0,0,1,0]]
         },
         "0ca3e6e7-89ce-4932-a0bc-b5c4eb9e5f0d" :{
-            "Seasonal peaks" : [0,0,0,0,0,0],
-            "Certain time every day" : [0,0,0,0,0,0],
-            "All time" : [0,0,0,0,0,0],
-            "Not much traffic" : [0,0,0,0,0,0],
-            "Not sure" : [0,0,0,0,0,0]
+            "Seasonal peaks" : [[0,0,0,0,0,0],[0,0,0,0],[0,0,0,0]],
+            "Certain time every day" : [[0,0,0,0,0,0],[0,0,0,0],[0,0,0,0]],
+            "All time" : [[0,0,0,0,0,0],[0,0,0,0],[0,0,0,0]],
+            "Not much traffic" : [[0,0,0,0,0,0],[0,0,0,0],[0,0,0,0]],
+            "Not sure" : [[0,0,0,0,0,0],[0,0,0,0],[0,0,0,0]]
         },
         "9553e4d6-dd7e-46f5-ad89-a28edb63de05" :{
-            "Faster" : [0,0,0,0,0,0],
-            "Slower" : [0,0,0,0,0,0],
-            "Not sure" : [0,0,0,0,0,0]
+            "Faster" : [[0,0,0,0,0,0],[0,0,0,0],[0,0,0,0]],
+            "Slower" : [[0,0,0,0,0,0],[0,0,0,0],[0,0,0,0]],
+            "Not sure" : [[0,0,0,0,0,0],[0,0,0,0],[0,0,0,0]]
         },
         "0454a74d-2223-4914-89ef-89eccb7670cb": {
-            "Low" : [0,0,0,0,0,0],
-            "Low to Moderate" : [0,0,0,0,0,0],
-            "Moderate" : [0,0,0,0,0,0],
-            "High" : [0,0,0,0,0,0],
+            "Low" : [[0,0,0,0,0,0],[0,0,0,0],[0,0,0,0]],
+            "Low to Moderate" : [[0,0,0,0,0,0],[0,0,0,0],[0,0,0,0]],
+            "Moderate" : [[0,0,0,0,0,0],[0,0,0,0],[0,0,0,0]],
+            "High" : [[0,0,0,0,0,0],[0,0,0,0],[0,0,0,0]]
         }}
 
         for i in result:
             k = tab3[i["UUID"]][i["OPTION_NAME"]]
-            for i in range(len(k)):
-                weights[i] += k[i]
+            for j in range(len(k)):
+                for m in range(len(k[j])):
+                    weights[j][m] += k[j][m]
 
         response = {}
-        labels = ["Object storage","Block storage","File storage","Cool","Cold","Hybrid Storage"]
+        labels = [["Object storage","Block storage","File storage","Cool","Cold","Hybrid Storage"],["General","Compute optimized","Memory Optimized","Storage Optimized"],["Small","Medium","Large","V Large"]]
 
-        for i in range(len(labels)):
-            response[labels[i]] = weights[i]
-            
+        for i in range(len(labels)-1):
+            response[i] = {}
+            for j in range(len(labels[i])):
+                response[i][labels[i][j]] = weights[i][j]
+        
+        response[2] = ""
+
+        for i in range(len(labels[2])):
+            if(weights[2][i] > 0):
+                response[2] = labels[2][i]
+                    
         print(response)
         return jsonify({'response': response})
 
